@@ -59,7 +59,7 @@
   TLegend* leg = new TLegend(0.45, 0.75, 0.89, 0.89);//(xmin, ymin, xmax, ymax)
   leg->AddEntry(Ld, "Razor SI u-quark (5 fb^{-1})" ,"l");
   leg->AddEntry(Lu, "Razor SI d-quark (5 fb^{-1})" ,"l");
-  leg->AddEntry(Lmono, "Monojer SI combined limit (19.5 fb^{-1})" ,"l");
+  leg->AddEntry(Lmono, "Monojet SI combined limit (19.5 fb^{-1})" ,"l");
   leg->SetFillColor(0);
   leg->SetBorderSize(0);
   leg->SetTextSize(0.03);
