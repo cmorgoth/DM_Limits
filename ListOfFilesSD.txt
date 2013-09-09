@@ -1,0 +1,8 @@
+/Users/cmorgoth/Software/git/DM_Limits/DirectDetection/SD/CDF_SD.txt
+/Users/cmorgoth/Software/git/DM_Limits/DirectDetection/SD/CDMSII_limits_right_formt_SD.txt
+/Users/cmorgoth/Software/git/DM_Limits/DirectDetection/SD/COUPP_2008.txt
+/Users/cmorgoth/Software/git/DM_Limits/DirectDetection/SD/Ice_Cub_proton_2009.txt
+/Users/cmorgoth/Software/git/DM_Limits/DirectDetection/SD/Monojet_8TeV.txt
+/Users/cmorgoth/Software/git/DM_Limits/DirectDetection/SD/SIMPLE_right_Neutron.txt
+/Users/cmorgoth/Software/git/DM_Limits/DirectDetection/SD/SIMPLE_right_Proton.txt
+/Users/cmorgoth/Software/git/DM_Limits/DirectDetection/SD/SuperK_proton_2004.txt
