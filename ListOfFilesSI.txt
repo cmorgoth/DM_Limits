@@ -1,7 +1,7 @@
-/Users/cmorgoth/Software/git/DM_Limits/DirectDetection/SI/CDF_SI.txt
-/Users/cmorgoth/Software/git/DM_Limits/DirectDetection/SI/Monojet_8TeV.txt
-/Users/cmorgoth/Software/git/DM_Limits/DirectDetection/SI/bayes_fit_95_right_format.txt
-/Users/cmorgoth/Software/git/DM_Limits/DirectDetection/SI/cdms_edelweiss_right_format.txt
-/Users/cmorgoth/Software/git/DM_Limits/DirectDetection/SI/pMSSM_right_format.txt
-/Users/cmorgoth/Software/git/DM_Limits/DirectDetection/SI/xenon_10s2_right_format.txt
-/Users/cmorgoth/Software/git/DM_Limits/DirectDetection/SI/xenon_1T_right_format.txt
+DirectDetection/SI/CDF_SI.txt
+DirectDetection/SI/Monojet_8TeV.txt
+DirectDetection/SI/bayes_fit_95_right_format.txt
+DirectDetection/SI/cdms_edelweiss_right_format.txt
+DirectDetection/SI/pMSSM_right_format.txt
+DirectDetection/SI/xenon_10s2_right_format.txt
+DirectDetection/SI/xenon_1T_right_format.txt
