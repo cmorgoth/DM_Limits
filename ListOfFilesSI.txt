@@ -1,5 +1,7 @@
 /Users/cmorgoth/Software/git/DM_Limits/DirectDetection/SI/CDF_SI.txt
 /Users/cmorgoth/Software/git/DM_Limits/DirectDetection/SI/Monojet_8TeV.txt
+/Users/cmorgoth/Software/git/DM_Limits/DirectDetection/SI/RazorDM_Vd_8TeV.txt
+/Users/cmorgoth/Software/git/DM_Limits/DirectDetection/SI/RazorDM_Vu_8TeV.txt
 /Users/cmorgoth/Software/git/DM_Limits/DirectDetection/SI/bayes_fit_95_right_format.txt
 /Users/cmorgoth/Software/git/DM_Limits/DirectDetection/SI/cdms_edelweiss_right_format.txt
 /Users/cmorgoth/Software/git/DM_Limits/DirectDetection/SI/pMSSM_right_format.txt

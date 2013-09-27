@@ -12,7 +12,9 @@ LDFLAGS := $(shell root-config --glibs) $(STDLIBDIR)
 CPPFLAGS += -g
 
 TARGET = CreateGraph
+#TARGET = DM_Limits
 SRC = Tgraph_main.cc create_TGraph.cc
+#SRC = DM_Razor_Limits_Extraction.cc
 
 OBJ = $(SRC:.cc=.o)
 
