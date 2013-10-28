@@ -3,9 +3,11 @@
   TFile* f = new TFile("graphs.root");
   TGraph* Lmono = (TGraph*)f->Get("g_mono_lambda_SD");
   
-  TFile* f3 = new TFile("SD_Graphs.root");
-  TGraph* Ld = (TGraph*)f3->Get("RazorDM_AVd_8TeV");
-  TGraph* Lu = (TGraph*)f3->Get("RazorDM_AVu_8TeV");
+  TFile* f3 = new TFile("SI_Graphs.root");
+  TGraph* Ld = (TGraph*)f3->Get("RazorDM_Vd_8TeV");
+  TGraph* Lu = (TGraph*)f3->Get("RazorDM_Vu_8TeV");
+  TGraph* Lc = (TGraph*)f3->Get("RazorDM_V_8TeV_Combined");
+  TGraph* Lcom = (TGraph*)f3->Get("RazorDM_V_8TeV_Combined_Expected");
 
   TCanvas* C = new TCanvas("C", "C", 640, 640);
   C->cd();
@@ -16,10 +18,19 @@
   Ld->SetLineWidth(2);
   Ld->SetLineStyle(2);
   
+  Lc->SetLineColor(kViolet);
+  Lc->SetLineWidth(2);
+  Lc->SetLineStyle(2);
+
   
   Lu->SetLineColor(kRed);
   Lu->SetLineWidth(2);
   Lu->SetLineStyle(2);
+  
+  Lcom->SetLineColor(kPink-4);
+  Lcom->SetLineWidth(2);
+  Lcom->SetLineStyle(2);
+  
   Lmono->SetLineColor(kGreen);
   Lmono->SetLineWidth(2);
   Lmono->SetLineStyle(2);
@@ -33,8 +44,10 @@
 
   TMultiGraph *mg = new TMultiGraph();
   mg->Add(Lmono);
-  mg->Add(Ld);
-  mg->Add(Lu);
+  //mg->Add(Ld);
+  //mg->Add(Lu);
+  mg->Add(Lcom);
+  mg->Add(Lc);
   mg->Draw("ALP");
   mg->GetXaxis()->SetTitle(labelX);
   mg->GetYaxis()->SetTitle(labelY);
@@ -52,8 +65,10 @@
   t->DrawLatex(0.25,0.83,"#sqrt{s} = 8 TeV");
   
   TLegend* leg = new TLegend(0.45, 0.75, 0.89, 0.89);//(xmin, ymin, xmax, ymax)
-  leg->AddEntry(Ld, "Razor A-V current u-quark (19.6 fb^{-1})" ,"l");
-  leg->AddEntry(Lu, "Razor A-V current d-quark (19.6 fb^{-1})" ,"l");
+  //leg->AddEntry(Ld, "Razor V current u-quark (19.6 fb^{-1})" ,"l");
+  //leg->AddEntry(Lu, "Razor V current d-quark (19.6 fb^{-1})" ,"l");
+  leg->AddEntry(Lcom, "Razor V current combined Expected (19.6 fb^{-1})" ,"l");
+  leg->AddEntry(Lc, "Razor V current combined (19.6 fb^{-1})" ,"l");
   leg->AddEntry(Lmono, "Monojet combined limit (19.5 fb^{-1})" ,"l");
   leg->SetFillColor(0);
   leg->SetBorderSize(0);
@@ -65,8 +80,8 @@
   C->SetLogy();
   C->SetLogx();
   C->Update();
-  C->SaveAs("AV_LambdaLimit_v2.pdf");
-  C->SaveAs("AV_LambdaLimit_v2.png");
+  C->SaveAs("V_LambdaLimit_v2.pdf");
+  C->SaveAs("V_LambdaLimit_v2.png");
 
 
 }

@@ -6,7 +6,9 @@
   TFile* f3 = new TFile("SD_Graphs.root");
   TGraph* Ld = (TGraph*)f3->Get("RazorDM_AVd_8TeV");
   TGraph* Lu = (TGraph*)f3->Get("RazorDM_AVu_8TeV");
-
+  TGraph* Lc = (TGraph*)f3->Get("RazorDM_AV_8TeV_Combined");
+  TGraph* Lcom = (TGraph*)f3->Get("RazorDM_AV_8TeV_Combined_Expected");
+  
   TCanvas* C = new TCanvas("C", "C", 640, 640);
   C->cd();
   TString labelX = "M_{#chi} (GeV)";
@@ -16,10 +18,18 @@
   Ld->SetLineWidth(2);
   Ld->SetLineStyle(2);
   
+  Lc->SetLineColor(kViolet);
+  Lc->SetLineWidth(2);
+  Lc->SetLineStyle(2);
   
   Lu->SetLineColor(kRed);
   Lu->SetLineWidth(2);
   Lu->SetLineStyle(2);
+
+  Lcom->SetLineColor(kPink-4);
+  Lcom->SetLineWidth(2);
+  Lcom->SetLineStyle(2);
+
   Lmono->SetLineColor(kGreen);
   Lmono->SetLineWidth(2);
   Lmono->SetLineStyle(2);
@@ -33,8 +43,10 @@
 
   TMultiGraph *mg = new TMultiGraph();
   mg->Add(Lmono);
-  mg->Add(Ld);
-  mg->Add(Lu);
+  //mg->Add(Ld);
+  //mg->Add(Lu);
+  mg->Add(Lc);
+  mg->Add(Lcom);
   mg->Draw("ALP");
   mg->GetXaxis()->SetTitle(labelX);
   mg->GetYaxis()->SetTitle(labelY);
@@ -52,8 +64,10 @@
   t->DrawLatex(0.25,0.83,"#sqrt{s} = 8 TeV");
   
   TLegend* leg = new TLegend(0.45, 0.75, 0.89, 0.89);//(xmin, ymin, xmax, ymax)
-  leg->AddEntry(Ld, "Razor A-V current u-quark (19.6 fb^{-1})" ,"l");
-  leg->AddEntry(Lu, "Razor A-V current d-quark (19.6 fb^{-1})" ,"l");
+  //leg->AddEntry(Ld, "Razor A-V current u-quark (19.6 fb^{-1})" ,"l");
+  //leg->AddEntry(Lu, "Razor A-V current d-quark (19.6 fb^{-1})" ,"l");
+  leg->AddEntry(Lc, "Razor A-V current combined (19.6 fb^{-1})" ,"l");
+  leg->AddEntry(Lcom, "Razor A-V current combined Expected (19.6 fb^{-1})" ,"l");
   leg->AddEntry(Lmono, "Monojet combined limit (19.5 fb^{-1})" ,"l");
   leg->SetFillColor(0);
   leg->SetBorderSize(0);
