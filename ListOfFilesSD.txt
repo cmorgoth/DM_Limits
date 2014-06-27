@@ -3,8 +3,13 @@
 /Users/cmorgoth/Software/git/DM_Limits/DirectDetection/SD/COUPP_2008.txt
 /Users/cmorgoth/Software/git/DM_Limits/DirectDetection/SD/Ice_Cub_proton_2009.txt
 /Users/cmorgoth/Software/git/DM_Limits/DirectDetection/SD/Monojet_8TeV.txt
+/Users/cmorgoth/Software/git/DM_Limits/DirectDetection/SD/Monojet_AV_8TeV.txt
 /Users/cmorgoth/Software/git/DM_Limits/DirectDetection/SD/RazorDM_AV_8TeV_Combined.txt
+/Users/cmorgoth/Software/git/DM_Limits/DirectDetection/SD/RazorDM_AV_8TeV_Combined_Toys.txt
+/Users/cmorgoth/Software/git/DM_Limits/DirectDetection/SD/RazorDM_SD_8TeV_Combined_Toys.txt 
 /Users/cmorgoth/Software/git/DM_Limits/DirectDetection/SD/RazorDM_AV_8TeV_Combined_Expected.txt
+/Users/cmorgoth/Software/git/DM_Limits/DirectDetection/SD/RazorDM_AV_8TeV_Combined_Expected_down.txt
+/Users/cmorgoth/Software/git/DM_Limits/DirectDetection/SD/RazorDM_AV_8TeV_Combined_Expected_up.txt
 /Users/cmorgoth/Software/git/DM_Limits/DirectDetection/SD/RazorDM_AVd_8TeV.txt
 /Users/cmorgoth/Software/git/DM_Limits/DirectDetection/SD/RazorDM_AVu_8TeV.txt
 /Users/cmorgoth/Software/git/DM_Limits/DirectDetection/SD/SIMPLE_right_Neutron.txt

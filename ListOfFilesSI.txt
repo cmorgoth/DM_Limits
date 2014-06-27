@@ -1,8 +1,13 @@
 /Users/cmorgoth/Software/git/DM_Limits/DirectDetection/SI/CDF_SI.txt
 /Users/cmorgoth/Software/git/DM_Limits/DirectDetection/SI/CDF_SI.txt~
 /Users/cmorgoth/Software/git/DM_Limits/DirectDetection/SI/Monojet_8TeV.txt
+/Users/cmorgoth/Software/git/DM_Limits/DirectDetection/SI/Monojet_V_8TeV.txt
 /Users/cmorgoth/Software/git/DM_Limits/DirectDetection/SI/RazorDM_V_8TeV_Combined.txt
+/Users/cmorgoth/Software/git/DM_Limits/DirectDetection/SI/RazorDM_V_8TeV_Combined_Toys.txt
+/Users/cmorgoth/Software/git/DM_Limits/DirectDetection/SI/RazorDM_SI_8TeV_Combined_Toys.txt
 /Users/cmorgoth/Software/git/DM_Limits/DirectDetection/SI/RazorDM_V_8TeV_Combined_Expected.txt
+/Users/cmorgoth/Software/git/DM_Limits/DirectDetection/SI/RazorDM_V_8TeV_Combined_Expected_up.txt
+/Users/cmorgoth/Software/git/DM_Limits/DirectDetection/SI/RazorDM_V_8TeV_Combined_Expected_down.txt
 /Users/cmorgoth/Software/git/DM_Limits/DirectDetection/SI/RazorDM_Vd_8TeV.txt
 /Users/cmorgoth/Software/git/DM_Limits/DirectDetection/SI/RazorDM_Vu_8TeV.txt
 /Users/cmorgoth/Software/git/DM_Limits/DirectDetection/SI/bayes_fit_95_right_format.txt

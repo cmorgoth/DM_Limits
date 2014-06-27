@@ -1,39 +1,70 @@
 {
 
-  TFile* f = new TFile("graphs.root");
-  TGraph* Lmono = (TGraph*)f->Get("g_mono_lambda_SD");
-  
   TFile* f3 = new TFile("SI_Graphs.root");
+  TGraph* Lmono = (TGraph*)f3->Get("Monojet_V_8TeV");
   TGraph* Ld = (TGraph*)f3->Get("RazorDM_Vd_8TeV");
   TGraph* Lu = (TGraph*)f3->Get("RazorDM_Vu_8TeV");
-  TGraph* Lc = (TGraph*)f3->Get("RazorDM_V_8TeV_Combined");
+  TGraph* Lc = (TGraph*)f3->Get("RazorDM_V_8TeV_Combined_Toys");
   TGraph* Lcom = (TGraph*)f3->Get("RazorDM_V_8TeV_Combined_Expected");
 
-  TCanvas* C = new TCanvas("C", "C", 640, 640);
-  C->cd();
+  TGraph* Lup = (TGraph*)f3->Get("RazorDM_V_8TeV_Combined_Expected_up");
+  TGraph* Ldown = (TGraph*)f3->Get("RazorDM_V_8TeV_Combined_Expected_down");
+
   TString labelX = "M_{#chi} (GeV)";
   TString labelY = "#Lambda (GeV)";
+  int n = Lcom->GetN();
+  double* x = Lup->GetX();
+  double* yup = Lup->GetY();
+  double* ydown = Ldown->GetY();
+  TGraph *grshade = new TGraph(2*n);
+  for(int i = 0; i < n; i++) {
+    grshade->SetPoint(i,x[i],ydown[i]);
+    grshade->SetPoint(n+i,x[n-i-1],yup[n-i-1]);
+  }
+  grshade->SetFillStyle(3013);
+  //grshade->SetFillColor(kOrange+6);
+  grshade->SetFillColor(kRed-10);
+  grshade->SetTitle("");
   
-  Ld->SetLineColor(kBlue);
-  Ld->SetLineWidth(2);
-  Ld->SetLineStyle(2);
+  TCanvas* C = new TCanvas("C", "C", 640, 640);
+  C->cd();
   
-  Lc->SetLineColor(kViolet);
-  Lc->SetLineWidth(2);
-  Lc->SetLineStyle(2);
+  TMultiGraph *mg0 = new TMultiGraph();
+  mg0->Add(grshade);
+  
+  mg0->Draw("af");
+  mg0->GetYaxis()->SetRangeUser(300, 1.7*1e3);
+  mg0->GetXaxis()->SetTitle(labelX);
+  mg0->GetYaxis()->SetTitle(labelY);
+  mg0->GetXaxis()->SetTitleOffset(1.1);
+  mg0->GetXaxis()-> CenterTitle();
+  mg0->GetYaxis()->SetTitleOffset(1.1);
+  mg0->GetYaxis()-> CenterTitle();
 
-  
-  Lu->SetLineColor(kRed);
-  Lu->SetLineWidth(2);
-  Lu->SetLineStyle(2);
-  
-  Lcom->SetLineColor(kPink-4);
-  Lcom->SetLineWidth(2);
+  Lc->SetLineWidth(2);
+  Lc->SetLineStyle(1);
+  //Lc->SetLineColor(kViolet-4);
+  Lc->SetLineColor(kBlue);
+
+  //Lcom->SetLineColor(kRed);
+  Lcom->SetLineColor(kRed-7);
+  Lcom->SetLineWidth(3);
   Lcom->SetLineStyle(2);
+
+  //Lup->SetLineColor(kRed);
+  Lup->SetLineColor(kRed-7);
+  Lup->SetLineWidth(2);
+  Lup->SetLineStyle(2);
   
-  Lmono->SetLineColor(kGreen);
+  //Ldown->SetLineColor(kRed);
+  Ldown->SetLineColor(kRed-7);
+  Ldown->SetLineWidth(2);
+  Ldown->SetLineStyle(2);
+  
+  //Lmono->SetLineColor(kBlack);
+  Lmono->SetLineColor(kGreen-6);
   Lmono->SetLineWidth(2);
-  Lmono->SetLineStyle(2);
+  Lmono->SetLineStyle(1);
   
   Ld->GetYaxis()->SetTitle(labelY);
   Ld->GetXaxis()->SetTitleOffset(1.1);
@@ -41,34 +72,40 @@
   Ld->GetYaxis()->SetTitleOffset(1.1);
   Ld->GetYaxis()-> CenterTitle();
   
-
+  
   TMultiGraph *mg = new TMultiGraph();
-  mg->Add(Lmono);
-  //mg->Add(Ld);
-  //mg->Add(Lu);
+  mg->Add(Lup);
   mg->Add(Lcom);
+  mg->Add(Ldown); 
   mg->Add(Lc);
-  mg->Draw("ALP");
-  mg->GetXaxis()->SetTitle(labelX);
+  mg->Add(Lmono);
+  //mg->Draw("AF");
+  mg->Draw("L");
+    /*
+    mg->GetXaxis()->SetTitle(labelX);
   mg->GetYaxis()->SetTitle(labelY);
   mg->GetXaxis()->SetTitleOffset(1.1);
   mg->GetXaxis()-> CenterTitle();
   mg->GetYaxis()->SetTitleOffset(1.1);
   mg->GetYaxis()-> CenterTitle();
-  mg->GetYaxis()->SetRangeUser(300, 1400);
+  mg->GetYaxis()->SetRangeUser(300, 1.7*1e3);
+  */
   
+  //mg->GetYaxis()->SetRangeUser(450, 2.7*1e3);
+  //C->RangeAxis(1,400,1000,5000);
+
   TLatex *t = new TLatex();
   t->SetNDC();
   t->SetTextAlign(22);
   t->SetTextSize(0.03);
-  t->DrawLatex(0.25,0.87,"CMS Preliminary");
-  t->DrawLatex(0.25,0.83,"#sqrt{s} = 8 TeV");
+  t->DrawLatex(0.23,0.92,"CMS Preliminary");
+  t->DrawLatex(0.41,0.92,", #sqrt{s} = 8 TeV");
   
-  TLegend* leg = new TLegend(0.45, 0.75, 0.89, 0.89);//(xmin, ymin, xmax, ymax)
-  //leg->AddEntry(Ld, "Razor V current u-quark (19.6 fb^{-1})" ,"l");
-  //leg->AddEntry(Lu, "Razor V current d-quark (19.6 fb^{-1})" ,"l");
-  leg->AddEntry(Lcom, "Razor V current combined Expected (19.6 fb^{-1})" ,"l");
-  leg->AddEntry(Lc, "Razor V current combined (19.6 fb^{-1})" ,"l");
+  TLegend* leg = new TLegend(0.50, 0.75, 0.90, 0.89);//(xmin, ymin, xmax, ymax)
+  leg->AddEntry(Ldown, "Razor V Expected -1#sigma (18.5 fb^{-1})" ,"l");
+  leg->AddEntry(Lcom, "Razor V Expected (18.5 fb^{-1})" ,"l");
+  leg->AddEntry(Lup, "Razor V Expected +1#sigma (18.5 fb^{-1})" ,"l");
+  leg->AddEntry(Lc, "Razor V Observed (18.5 fb^{-1})" ,"l");
   leg->AddEntry(Lmono, "Monojet combined limit (19.5 fb^{-1})" ,"l");
   leg->SetFillColor(0);
   leg->SetBorderSize(0);
@@ -79,9 +116,9 @@
 
   C->SetLogy();
   C->SetLogx();
+  
   C->Update();
-  C->SaveAs("V_LambdaLimit_v2.pdf");
-  C->SaveAs("V_LambdaLimit_v2.png");
-
-
+  C->SaveAs("V_LambdaLimit_v2_BtagCorr_FullData_1D_IE.pdf");
+  C->SaveAs("V_LambdaLimit_v2_BtagCorr_FullData_1D_IE.png");
+  C->SaveAs("V_LambdaLimit_v2_BtagCorr_FullData_1D_IE.C");
 }

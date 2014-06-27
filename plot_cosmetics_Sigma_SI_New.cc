@@ -35,7 +35,8 @@
   Ld->GetYaxis()-> CenterTitle();
   
   TFile* f1 = new TFile("SI_Graphs.root");
-  
+
+  TGraph* RSI = (TGraph*)f1->Get("RazorDM_SI_8TeV_Combined_Toys");
   TGraph* cdf = (TGraph*)f1->Get("CDF_SI");
   TGraph* CDMSII = (TGraph*)f1->Get("cdms_edelweiss_right_format");
   TGraph* pMSSM = (TGraph*)f1->Get("pMSSM_right_format");
@@ -72,13 +73,14 @@
   
   mg->Add(pMSSM,"F");
   mg->Add(monojet,"L");
+  mg->Add(RSI,"L");
   mg->Add(Ld,"L");
   mg->Add(Lu,"L");
   mg->Add(cdf,"L");
   mg->Add(CDMSII,"L");
   mg->Add(Xenon10s2,"L");
   mg->Add(Xenon1T,"L");
-  mg->Draw("A");
+  mg->Draw("AL");
   mg->GetXaxis()->SetTitle(labelX);
   mg->GetYaxis()->SetTitle(labelY);
   mg->GetXaxis()->SetTitleOffset(1.1);

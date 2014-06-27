@@ -2,8 +2,6 @@
 
   TFile* f = new TFile("graphs.root");
 
-  TGraph* Ld = (TGraph*)f->Get("g0_05_SD");
-  TGraph* Lu = (TGraph*)f->Get("g1_05_SD");
   TGraph* Lmono = (TGraph*)f->Get("g_mono_SI");
    
   TCanvas* C = new TCanvas("C", "C", 640, 640);
@@ -17,22 +15,10 @@
   pad1->Draw();
   pad1->cd();
 
-  Ld->SetLineColor(kBlue);
-  Ld->SetLineWidth(3);
-  Ld->SetLineStyle(9);
-  
-  Lu->SetLineColor(kRed);
-  Lu->SetLineWidth(3);
-  Lu->SetLineStyle(9);
   Lmono->SetLineColor(kGreen);
   Lmono->SetLineWidth(3);
   Lmono->SetLineStyle(9);
-  
-  Ld->GetYaxis()->SetTitle(labelY);
-  Ld->GetXaxis()->SetTitleOffset(1.1);
-  Ld->GetXaxis()-> CenterTitle();
-  Ld->GetYaxis()->SetTitleOffset(1.3);
-  Ld->GetYaxis()-> CenterTitle();
+ 
   
   TFile* f1 = new TFile("SD_Graphs.root");
   
@@ -44,44 +30,47 @@
   TGraph* SIMPLE_P = (TGraph*)f1->Get("SIMPLE_right_Proton");
   TGraph* SuperK_P = (TGraph*)f1->Get("SuperK_proton_2004");
   TGraph* monojet = (TGraph*)f1->Get("Monojet_8TeV");
+  TGraph* RSD = (TGraph*)f1->Get("RazorDM_SD_8TeV_Combined_Toys");
+  RSD->SetLineColor(kRed);
+  RSD->SetLineWidth(2);
+  RSD->SetLineStyle(1);
 
   cdf->SetLineColor(kMagenta-4);
-  cdf->SetLineWidth(3);
+  cdf->SetLineWidth(2);
   cdf->SetLineStyle(1);
 
   CDMSII->SetLineColor(kOrange-2);
-  CDMSII->SetLineWidth(3);
+  CDMSII->SetLineWidth(2);
   CDMSII->SetLineStyle(1);
   
   COUPP->SetLineColor(kBlue-1);
-  COUPP->SetLineWidth(3);
+  COUPP->SetLineWidth(2);
   COUPP->SetLineStyle(1);
 
   Ice_Cub->SetLineColor(kCyan+1);
-  Ice_Cub->SetLineWidth(3);
+  Ice_Cub->SetLineWidth(2);
   Ice_Cub->SetLineStyle(1);
   
   SIMPLE_N->SetLineColor(kViolet-4);
-  SIMPLE_N->SetLineWidth(3);
+  SIMPLE_N->SetLineWidth(2);
   SIMPLE_N->SetLineStyle(1);
 
   SIMPLE_P->SetLineColor(kGreen+2);
-  SIMPLE_P->SetLineWidth(3);
+  SIMPLE_P->SetLineWidth(2);
   SIMPLE_P->SetLineStyle(1);
 
   SuperK_P->SetLineColor(kAzure-9);
-  SuperK_P->SetLineWidth(3);
+  SuperK_P->SetLineWidth(2);
   SuperK_P->SetLineStyle(1);
   
   monojet->SetLineColor(8);
-  monojet->SetLineWidth(3);
-  monojet->SetLineStyle(9);
+  monojet->SetLineWidth(2);
+  monojet->SetLineStyle(2);
   
   TMultiGraph *mg = new TMultiGraph();
   
   mg->Add(monojet,"L");
-  mg->Add(Ld,"L");
-  mg->Add(Lu,"L");
+  mg->Add(RSD,"L");
   mg->Add(cdf,"L");
   mg->Add(CDMSII,"L");
   mg->Add(COUPP,"L");
@@ -98,20 +87,19 @@
   mg->GetYaxis()-> CenterTitle();
   //mg->GetXaxis()->SetRangeUser(1.0, 1000.0);
   mg->GetXaxis()->SetLimits(1.0, 1000.0);
-  mg->GetYaxis()->SetRangeUser(1e-48, 1e-26);
+  mg->GetYaxis()->SetRangeUser(1e-44, 8e-30);
   
   TLatex *t = new TLatex();
   t->SetNDC();
   t->SetTextAlign(22);
   t->SetTextSize(0.03);
   //t->DrawLatex(0.25,0.87,"CMS Preliminary");
-  t->DrawLatex(0.29,0.87,"Caltech-CMS Internal");   
-  t->DrawLatex(0.29,0.825,"#sqrt{s} = 8 TeV");
-  t->DrawLatex(0.29,0.745,"#int L dt = 5 fb^{-1}");
+  t->DrawLatex(0.25,0.93,"CMS Preliminary: ");   
+  t->DrawLatex(0.45,0.93,"#sqrt{s} = 8 TeV,");
+  t->DrawLatex(0.63,0.93,"#int L dt = 18.5 fb^{-1}");
   
   TLegend* leg = new TLegend(0.45, 0.65, 0.89, 0.89);//(xmin, ymin, xmax, ymax)
-  leg->AddEntry(Ld, "Razor SD u-quark (5 fb^{-1})" ,"l");
-  leg->AddEntry(Lu, "Razor SD d-quark (5 fb^{-1})" ,"l");
+  leg->AddEntry(RSD, "Razor SD (18.5 fb^{-1})" ,"l");
   leg->AddEntry(monojet, "Monojet SD combined limit (19.5 fb^{-1})" ,"l");
   leg->AddEntry(cdf, "CDF 2012" ,"l");
   leg->AddEntry(CDMSII, "CDMSII 2010" ,"l");
